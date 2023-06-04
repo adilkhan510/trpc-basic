@@ -10,5 +10,14 @@ export const appRouter = t.router({
   hello: t.procedure.query(({ ctx }) => {
     return { hello: 'world' };
   }),
+  bye: t.procedure
+    .input(
+      z.object({
+        name: z.string(),
+      })
+    )
+    .query(({ input }) => {
+      return { bye: input.name };
+    }),
 });
 export type AppRouter = typeof appRouter;
